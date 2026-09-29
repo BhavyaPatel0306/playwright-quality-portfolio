@@ -104,7 +104,7 @@ When a test fails:
 ## GitHub Actions
 The workflow runs on pull requests, pushes to `main`/`master`, and manual dispatch. It installs locked dependencies, type-checks TypeScript, installs Chromium with Linux dependencies, then runs both projects.
 
-HTML reports, JUnit XML and retained failure artifacts are uploaded for 14 days, including failed runs. Download `playwright-results` from the workflow run, extract it and point `npx playwright show-report` at its `playwright-report` directory. CI is configured here; a successful hosted run can only be claimed after this repository is pushed and the workflow executes.
+HTML reports, JUnit XML and retained failure artifacts are uploaded for 14 days, including failed runs. Download `playwright-results` from the workflow run, extract it and point `npx playwright show-report` at its `playwright-report` directory. The [first hosted workflow run](https://github.com/BhavyaPatel0306/playwright-quality-portfolio/actions/runs/36640106100) passed on September 29, 2026, including TypeScript checks, the test suite and report upload.
 
 ## GitHub repository
 Published at [BhavyaPatel0306/playwright-quality-portfolio](https://github.com/BhavyaPatel0306/playwright-quality-portfolio).

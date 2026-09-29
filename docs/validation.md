@@ -11,7 +11,7 @@ Verified locally on September 29, 2026.
 - HTML and JUnit reports generated. No failure screenshots or videos were retained because all tests passed.
 - Dependency installation reported no known vulnerabilities at installation time.
 
-This is a single local run, not a stability benchmark or a guarantee of public service availability. GitHub Actions has been configured but not run on GitHub. Linux/Node 22 CI execution remains unverified until publication.
+This is a single local run, not a stability benchmark or a guarantee of public service availability. The [first GitHub Actions run](https://github.com/BhavyaPatel0306/playwright-quality-portfolio/actions/runs/36640106100) passed on September 29, 2026 using Ubuntu and Node.js 22. Dependency installation, TypeScript checks, the test suite and report upload all succeeded.
 
 The delivered report archive preserves this successful run separately from the source repository. Future local runs overwrite the normal generated report directories.
 
