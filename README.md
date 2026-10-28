@@ -1,4 +1,7 @@
 # Playwright Quality Portfolio
+
+[![Playwright tests](https://github.com/BhavyaPatel0306/playwright-quality-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/BhavyaPatel0306/playwright-quality-portfolio/actions/workflows/playwright.yml)
+
 **Bhavya Patel · TypeScript · Playwright · UI & REST API regression testing**
 
 A compact software testing portfolio: **20 automated tests** exercise an online shopping journey and REST response contracts. Built to demonstrate test design, reusable automation, negative testing, and CI diagnostics relevant to a Software Developer in Test internship.
@@ -119,12 +122,11 @@ npm test
 
 The ignore file excludes installed dependencies, local environment files and generated reports. The lockfile and workflow are committed. Check the Actions tab for hosted workflow results.
 
-## Interview walkthrough
-Start with CHECK-01: describe the user journey, independent test setup, page-object actions, and assertions. Then show AUTH-05 as a negative session scenario and API-05 as a response contract example.
+## Review the implementation
 
-Be ready to explain why UI automation and API contracts complement each other, why fake writes cannot prove persistence, and why retries can expose rather than solve flakiness. Discuss adding Firefox/WebKit projects, formal schemas or an owned local test service as future work; those features are not implemented here.
+Start with [checkout tests](tests/ui/checkout.spec.ts) for a complete user journey, then inspect [authentication tests](tests/ui/authentication.spec.ts) and [REST contracts](tests/api/posts.spec.ts). These show independent setup, business assertions and negative scenarios.
 
-See [resume bullets](docs/resume-bullets.md) and [validation evidence](docs/validation.md). Do not claim production coverage, measured time savings, bugs found, or a hosted CI pass without corresponding evidence.
+[Validation evidence](docs/validation.md) records the scope of verification. Cross-browser coverage, formal response schemas and an owned test service are future improvements.
 
 ## References
 - [Playwright fixtures](https://playwright.dev/docs/test-fixtures)
