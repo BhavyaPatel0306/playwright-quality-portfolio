@@ -2,9 +2,9 @@
 
 [![Playwright tests](https://github.com/BhavyaPatel0306/playwright-quality-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/BhavyaPatel0306/playwright-quality-portfolio/actions/workflows/playwright.yml)
 
-**Bhavya Patel · TypeScript · Playwright · UI & REST API regression testing**
+**TypeScript · Playwright · GitHub Actions · UI & REST API regression testing**
 
-A compact software testing portfolio: **20 automated tests** exercise an online shopping journey and REST response contracts. Built to demonstrate test design, reusable automation, negative testing, and CI diagnostics relevant to a Software Developer in Test internship.
+An end-to-end test suite of **20 automated tests** covering an online shopping journey (login, inventory, cart, checkout) and REST API response contracts. It uses the Page Object Model, isolated fixtures, negative-path testing, and CI with HTML/JUnit reports and failure traces.
 
 ## Quick start
 Install **Node.js 22 or later**, then run from this repository:
@@ -20,9 +20,8 @@ On Linux, use `npx playwright install --with-deps chromium`. Internet access to 
 ## Targets and scope
 - **UI:** [SauceDemo](https://www.saucedemo.com), using its published demo accounts.
 - **REST API:** [JSONPlaceholder](https://jsonplaceholder.typicode.com/guide/), a separate test service; it is **not SauceDemo's backend**.
-- **Browser:** desktop Chromium. Cross-browser, mobile, performance, accessibility, and production security testing are outside this project's current scope.
-- JSONPlaceholder simulates POST, PATCH and DELETE responses without persisting changes. These tests validate response contracts, not database state.
-- Public services can change or become unavailable. Failures need investigation; they are not automatically application defects.
+- **Browser:** desktop Chromium.
+- JSONPlaceholder does not persist writes, so the API tests validate response contracts rather than stored state.
 
 ## Test coverage
 Each scenario has a searchable ID in test output and reports.
@@ -68,12 +67,11 @@ tests/ui/                        Four UI specification files
 tests/api/posts.spec.ts           Six REST scenarios
 playwright.config.ts              Separate UI/API projects and report settings
 package-lock.json                Reproducible dependency versions
-docs/resume-bullets.md            Evidence-based application wording
 docs/validation.md               Local verification results
 ```
 
 ## Design decisions
-Page objects encapsulate locators and user actions. Test files retain the scenario and business assertions so a reviewer can understand expected behavior without following multiple abstraction layers.
+Page objects encapsulate locators and user actions. Test files retain the scenario and business assertions so a reader can understand expected behavior without following multiple abstraction layers.
 
 Playwright gives each test a fresh browser context. The opt-in `authenticated` fixture logs in independently for cart, inventory and checkout scenarios. Authentication tests use a clean login page directly. No shared storage state or test ordering is required.
 
@@ -109,24 +107,11 @@ The workflow runs on pull requests, pushes to `main`/`master`, and manual dispat
 
 HTML reports, JUnit XML and retained failure artifacts are uploaded for 14 days, including failed runs. Download `playwright-results` from the workflow run, extract it and point `npx playwright show-report` at its `playwright-report` directory. The [first hosted workflow run](https://github.com/BhavyaPatel0306/playwright-quality-portfolio/actions/runs/36640106100) passed on September 29, 2026, including TypeScript checks, the test suite and report upload.
 
-## GitHub repository
-Published at [BhavyaPatel0306/playwright-quality-portfolio](https://github.com/BhavyaPatel0306/playwright-quality-portfolio).
-
-```sh
-git clone https://github.com/BhavyaPatel0306/playwright-quality-portfolio.git
-cd playwright-quality-portfolio
-npm ci
-npx playwright install chromium
-npm test
-```
-
-The ignore file excludes installed dependencies, local environment files and generated reports. The lockfile and workflow are committed. Check the Actions tab for hosted workflow results.
-
 ## Review the implementation
 
 Start with [checkout tests](tests/ui/checkout.spec.ts) for a complete user journey, then inspect [authentication tests](tests/ui/authentication.spec.ts) and [REST contracts](tests/api/posts.spec.ts). These show independent setup, business assertions and negative scenarios.
 
-[Validation evidence](docs/validation.md) records the scope of verification. Cross-browser coverage, formal response schemas and an owned test service are future improvements.
+**Future work:** cross-browser and mobile coverage, formal JSON schema validation, and an owned test service. See [validation notes](docs/validation.md) for local run results.
 
 ## References
 - [Playwright fixtures](https://playwright.dev/docs/test-fixtures)
